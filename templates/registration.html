@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <div class="container">
+
+      {% if registered %}
+      <div class="alert alert-success p-5">Congratulations! Registration Successfully</div>
+      
+      {% else %}
+      <form class="form-control px-5 justify-content-md-end" method="POST" enctype="multipart/form-data">
+      <h1 class="text-center bg-primary p-2">Blog Account Registration!</h1>
+
+          {% csrf_token %}
+          {{ user_form.as_p }}
+      
+          {{ reg_form.as_p }}
+      
+          <input class="btn btn-primary fs-5" style="padding: 8px 190px; margin-left: 280px" type="submit" name="submit" value="Register">
+
+          <a href="{% url 'login' %}" class="fs-4">Already have an account?</a>
+      
+      </form>
+      
+      {% endif %}
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+
+    
+  </body>
+</html>
